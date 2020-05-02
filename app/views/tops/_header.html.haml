@@ -1,11 +1,31 @@
 .header
   .header__box
     .header__box--one
-      ま
+      =link_to root_path do
+        = image_tag 'logo.jpg', alt: 'logo', height: '100', width: '100', class: 'logo1'
     .header__box--two
-      あ
+      検索バー
   .header__btn
     .header__btn--one
-      い
+      %ul.nav__right.ul_Nav
+      -# - if user_signed_in?
+        %li.nav__right--first.ul_Nav
+          = link_to  destroy_user_session_path, class: 'a', method: :delete do
+            %i.fas.fa-sign-out-alt
+            ログアウト
+        %li.nav__right--second.ul_Nav
+          = link_to user_path(current_user) , class: 'a' do
+            %i.fas.fa-user-cog
+            マイページ      
+      - else
+        %li.nav__right--first.ul_Nav
+          = link_to  user_session_path, class: 'a' do
+            %i.fas.fa-sign-in-alt
+            ログイン
+        %li.nav__right--second.ul_Nav
+          = link_to step1_signup_index_path , class: 'a' do
+            %i.fas.fa-user-plus
+            新規会員登録
     .header__btn--two
-      う
+      =link_to "#",class:"herupu" do
+        ヘルプ
